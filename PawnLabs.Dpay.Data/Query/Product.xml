@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Queries>
+
+	<Query id="GetAll">
+		SELECT
+			[ID],
+			[Email],
+			[Name],
+			[Description],
+			[Price],
+			[PriceType],
+			[Logo],
+			[CreationDate]
+		FROM Tbl_Product
+		WHERE [Email] = @Email
+		ORDER BY [CreationDate] DESC;
+	</Query>
+
+</Queries>
