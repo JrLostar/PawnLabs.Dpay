@@ -30,7 +30,7 @@ namespace PawnLabs.Dpay.Business.Service.Impl
         {
             var configurations = await _configurationRepository.GetAll(entity);
 
-            var configuration = configurations?.FirstOrDefault();
+            var configuration = configurations?.FirstOrDefault(f => f.Type == entity.Type);
 
             return _configurationHelper.GetModelFromEntity(configuration);
         }

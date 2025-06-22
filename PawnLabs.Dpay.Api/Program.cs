@@ -20,6 +20,7 @@ builder.Services.AddConfigurations(builder.Configuration);
 builder.Services.AddHelpers();
 
 builder.Services.AddHttpClient();
+builder.Services.AddSingleton<StellarBackgroundService>();
 builder.Services.AddHostedService<StellarBackgroundService>();
 
 #region Cors
