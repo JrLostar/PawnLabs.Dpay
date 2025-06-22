@@ -16,9 +16,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("policy", policy =>
     {
         policy.SetIsOriginAllowed(_ => true)
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
     });
 });
 
@@ -71,6 +71,8 @@ builder.Services.AddAuthentication(x =>
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
