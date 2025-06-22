@@ -28,13 +28,13 @@ namespace PawnLabs.Dpay.Core.Helper.Impl
             {
                 Text = $@"
                         <div style='font-family:Arial, sans-serif; font-size:16px; color:#333;'>
-                            <p>Merhaba,</p>
-                            <p>Giriş veya kayıt işlemini tamamlamak için aşağıdaki doğrulama kodunu kullanabilirsiniz:</p>
+                            <p>Hello,</p>
+                            <p>You can use the verification code below to complete the login process:</p>
                             <div style='margin:20px 0; padding:15px; background-color:#f2f2f2; text-align:center; font-size:24px; font-weight:bold; color:#2c3e50; border-radius:8px;'>
                                 {verificationCode}
                             </div>
-                            <p>Bu kod 5 dakika boyunca geçerlidir.</p>
-                            <p>Teşekkürler,<br/>SoLuck Ekibi</p>
+                            <p>This code is valid for 5 minutes.</p>
+                            <p>Thanks, <br/>Dpay Team</p>
                         </div>"
             };
 
