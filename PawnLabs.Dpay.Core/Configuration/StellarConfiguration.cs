@@ -9,5 +9,7 @@
         public string ContractID { get; set; }
 
         public int Delay { get; set; }
+
+        public int IterationCount { get; set; }
     }
 }

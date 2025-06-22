@@ -127,16 +127,17 @@ namespace PawnLabs.Dpay.Api.Controllers
 
         [HttpPost]
         [Route("/auth/token")]
-        public async Task<IActionResult> Token(string email, string apiKey)
+        public async Task<IActionResult> Token(string apiKey)
         {
             try
             {
-                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(apiKey))
+                if (string.IsNullOrEmpty(apiKey))
                     return BadRequest();
 
                 var apiKeyData = _securityHelper.DecryptString(apiKey);
+                var email = apiKeyData.Split("&")[0].Split("=")[1] ?? string.Empty;
 
-                if (!apiKeyData.Split("&")[0].Split("=")[1].Equals(email))
+                if (string.IsNullOrEmpty(email))
                     return Unauthorized();
 
                 var configuration = await _configurationService.GetByType(new Configuration() { Email = email, Type = EnumConfigurationType.ApiKey });

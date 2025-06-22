@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PawnLabs.Dpay.Core.Enum;
 
 namespace PawnLabs.Dpay.Api.Controllers.Base
 {
@@ -12,6 +13,14 @@ namespace PawnLabs.Dpay.Api.Controllers.Base
             get
             {
                 return User.Claims.FirstOrDefault(c => c.Type == "Email")?.Value ?? string.Empty;
+            }
+        }
+
+        protected EnumApplication Application
+        {
+            get
+            {
+                return (EnumApplication)int.Parse(User.Claims.FirstOrDefault(c => c.Type == "Application")?.Value ?? "0");
             }
         }
     }

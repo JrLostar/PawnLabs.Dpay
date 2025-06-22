@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PawnLabs.Dpay.Api.Controllers.Base;
+using PawnLabs.Dpay.Api.Model.Request;
 using PawnLabs.Dpay.Api.Model.Response;
+using PawnLabs.Dpay.Business.BackgroundService;
 using PawnLabs.Dpay.Business.Service;
 using PawnLabs.Dpay.Core.Entity;
+using PawnLabs.Dpay.Core.Enum;
 
 namespace PawnLabs.Dpay.Api.Controllers
 {
@@ -10,11 +13,70 @@ namespace PawnLabs.Dpay.Api.Controllers
     {
         private IPaymentService _paymentService;
         private IProductService _productService;
+        private IConfigurationService _configurationService;
 
-        public PaymentController(IPaymentService paymentService, IProductService productService) 
+        private StellarBackgroundService _stellarBackgroundService;
+
+
+        public PaymentController(IPaymentService paymentService, IProductService productService, IConfigurationService configurationService, StellarBackgroundService stellarBackgroundService) 
         {
             _paymentService = paymentService;
             _productService = productService;
+            _configurationService = configurationService;
+
+            _stellarBackgroundService = stellarBackgroundService;
+        }
+
+        [HttpPost]
+        [Route("/payment")]
+        public async Task<IActionResult> Save([FromBody] PaymentRequestModel request)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(Email) || Application != EnumApplication.Modal)
+                    return Unauthorized();
+
+                if (request == null)
+                    return BadRequest();
+
+                await _paymentService.Add(new Payment()
+                {
+                    Email = Email,
+                    ProductID = request.ProductID,
+                    BuyerAddress = request.BuyerAddress,
+                    WalletAddress = request.WalletAddress,
+                    Price = request.Price,
+                    PriceType = request.PriceType,
+                    Date = DateTime.UtcNow
+                });
+
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("/payment/qr")]
+        public async Task<IActionResult> PayWithQR(Guid productID)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(Email) || Application != EnumApplication.Modal)
+                    return Unauthorized();
+
+                var walletAddress = (string)((await _configurationService.GetByType(new Configuration() { Email = Email, Type = EnumConfigurationType.WalletAddress }))?.Value ?? string.Empty);
+
+                await _stellarBackgroundService.StartJobAsync(productID, walletAddress);
+
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet]
