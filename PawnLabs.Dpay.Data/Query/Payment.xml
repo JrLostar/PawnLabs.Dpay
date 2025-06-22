@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Queries>
+
+	<Query id="GetAll">
+		SELECT
+			[ID],
+			[Email],
+			[ProductID],
+			[BuyerAddress],
+			[WalletAddress],
+			[Price],
+			[PriceType],
+			[Date]
+		FROM Tbl_Payment
+		WHERE [Email] = @Email
+		ORDER BY [Date] DESC;
+	</Query>
+
+	<Query id="Add">
+		INSERT INTO Tbl_Payment
+		([Email], [ProductID], [BuyerAddress], [WalletAddress], [Price], [PriceType], [Date])
+		VALUES
+		(@Email, @ProductID, @BuyerAddress, @WalletAddress, @Price, @PriceType, @Date);
+	</Query>
+
+</Queries>

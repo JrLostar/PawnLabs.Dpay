@@ -1,6 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Queries>
 
+	<Query id="Get">
+		SELECT
+			[ID],
+			[Email],
+			[Name],
+			[Description],
+			[Price],
+			[PriceType],
+			[Logo],
+			[CreationDate]
+		FROM Tbl_Product
+		WHERE [ID] = @ID
+		[Email] = @Email;
+	</Query>
+
+	<Query id="GetByID">
+		SELECT
+			[ID],
+			[Email],
+			[Name],
+			[Description],
+			[Price],
+			[PriceType],
+			[Logo],
+			[CreationDate]
+		FROM Tbl_Product
+		WHERE [ID] = @ID;
+	</Query>
+
 	<Query id="GetAll">
 		SELECT
 			[ID],
@@ -14,6 +43,31 @@
 		FROM Tbl_Product
 		WHERE [Email] = @Email
 		ORDER BY [CreationDate] DESC;
+	</Query>
+
+	<Query id="Add">
+		INSERT INTO Tbl_Product
+			([Email], [Name], [Description], [Price], [PriceType], [Logo], [CreationDate])
+		VALUES
+			(@Email, @Name, @Description, @Price, @PriceType, @Logo, @CreationDate);
+	</Query>
+
+	<Query id="Update">
+		UPDATE Tbl_Product
+		SET
+			[Name] = @Name,
+			[Description] = @Description,
+			[Price] = @Price,
+			[PriceType] = @PriceType,
+			[Logo] = @Logo
+		WHERE [ID] = @ID
+			AND [Email] = @Email;
+	</Query>
+
+	<Query id="Delete">
+		DELETE FROM Tbl_Product
+		WHERE [ID] = @ID 
+		AND [Email] = @Email;
 	</Query>
 
 </Queries>

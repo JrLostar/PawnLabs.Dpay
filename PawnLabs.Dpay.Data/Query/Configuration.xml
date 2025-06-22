@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Queries>
+
+	<Query id="Get">
+		SELECT
+			[ID],
+			[Email],
+			[Type],
+			[Value]
+		FROM Tbl_Configuration
+		WHERE [ID] = @ID
+		[Email] = @Email;
+	</Query>
+
+	<Query id="GetAll">
+		SELECT
+			[ID],
+			[Email],
+			[Type],
+			[Value]
+		FROM Tbl_Configuration
+		WHERE [Email] = @Email;
+	</Query>
+
+	<Query id="Add">
+		INSERT INTO Tbl_Configuration
+			([Email], [Type], [Value])
+		VALUES
+			(@Email, @Type, @Value);
+	</Query>
+
+	<Query id="UpdateByEmail">
+		UPDATE Tbl_Configuration
+		SET
+			[Value] = @Value
+		WHERE [Type] = @Type
+			AND [Email] = @Email;
+	</Query>
+
+	<Query id="DeleteAll">
+		DELETE FROM Tbl_Configuration
+		WHERE [Email] = @Email;
+	</Query>
+
+</Queries>
