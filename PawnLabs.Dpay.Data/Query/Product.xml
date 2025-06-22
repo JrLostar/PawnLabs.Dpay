@@ -13,7 +13,7 @@
 			[CreationDate]
 		FROM Tbl_Product
 		WHERE [ID] = @ID
-		[Email] = @Email;
+		AND [Email] = @Email;
 	</Query>
 
 	<Query id="GetByID">
