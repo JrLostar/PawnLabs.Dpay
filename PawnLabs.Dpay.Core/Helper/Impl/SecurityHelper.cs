@@ -11,7 +11,7 @@ namespace PawnLabs.Dpay.Core.Helper.Impl
 {
     public class SecurityHelper : ISecurityHelper
     {
-        private static readonly byte[] EncryptionKey = Convert.FromBase64String("@1B2c3D4e5F6g7H8");
+        private static readonly byte[] EncryptionKey = Encoding.UTF8.GetBytes("@1B2c3D4e5F6g7H8");
 
         private TokenConfiguration tokenConfiguration;
 

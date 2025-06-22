@@ -26,6 +26,10 @@ namespace PawnLabs.Dpay.Core.Helper.Impl
             {
                 entity.Value = JsonConvert.SerializeObject(model.Value);
             }
+            else
+            {
+                entity.Value = model.Value;
+            }
 
             return entity;
         }
@@ -39,13 +43,16 @@ namespace PawnLabs.Dpay.Core.Helper.Impl
             {
                 ID = entity.ID,
                 Email = entity.Email,
-                Type = entity.Type,
-                Value = entity.Value
+                Type = entity.Type
             };
 
             if (entity.Type == EnumConfigurationType.Modal)
             {
                 model.Value = JsonConvert.DeserializeObject<ModalConfigurationModel>(entity.Value) ?? new ModalConfigurationModel();
+            }
+            else
+            {
+                model.Value = entity.Value;
             }
 
             return model;

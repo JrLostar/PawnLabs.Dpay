@@ -118,9 +118,6 @@ namespace PawnLabs.Dpay.Business.BackgroundService
                                 Date = DateTimeOffset.FromUnixTimeSeconds(long.Parse(date)).UtcDateTime
                             });
 
-                            if (!paymentID.HasValue)
-                                continue;
-
                             #region Socket
 
                             await socketHelper.ConnectToHub(product.Email);

@@ -117,8 +117,6 @@ namespace PawnLabs.Dpay.Api.Controllers
 
                     if (!isSuccess)
                         return BadRequest("UpdateFail");
-
-                    return Ok();
                 }
                 else
                 {
@@ -132,12 +130,9 @@ namespace PawnLabs.Dpay.Api.Controllers
                         Logo = request.Logo,
                         CreationDate = DateTime.UtcNow
                     });
-
-                    if (!productID.HasValue)
-                        return BadRequest("InsertFail");
-
-                    return Ok(productID.Value);
                 }
+
+                return Ok();
             }
             catch(Exception ex)
             {

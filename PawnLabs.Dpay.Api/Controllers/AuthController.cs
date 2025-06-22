@@ -79,13 +79,14 @@ namespace PawnLabs.Dpay.Api.Controllers
 
                 if(configurations == null || configurations?.Count < 4)
                 {
-                    if (configurations != null)
+                    if (configurations != null && configurations?.Count > 0)
                     {
                         var isSuccess = await _configurationService.DeleteAll(email);
 
                         if (!isSuccess)
                             return BadRequest();
                     }
+
                     #region ApiKey
 
                     string apiKeyData = $"email={email}&guid={Guid.NewGuid().ToString()}";
@@ -106,25 +107,10 @@ namespace PawnLabs.Dpay.Api.Controllers
 
                     #endregion
 
-                    var id = await _configurationService.Add(new ConfigurationModel() { Email = email, Type = Core.Enum.EnumConfigurationType.ApiKey, Value = apiKey });
-
-                    if (!id.HasValue)
-                        return BadRequest("InsertApiKeyFail");
-
-                    id = await _configurationService.Add(new ConfigurationModel() { Email = email, Type = Core.Enum.EnumConfigurationType.WalletAddress, Value = string.Empty });
-
-                    if (!id.HasValue)
-                        return BadRequest("InsertWalletAddressFail");
-
-                    id = await _configurationService.Add(new ConfigurationModel() { Email = email, Type = Core.Enum.EnumConfigurationType.Modal, Value = modalConfigurationModel });
-
-                    if (!id.HasValue)
-                        return BadRequest("InsertModalFail");
-
-                    id = await _configurationService.Add(new ConfigurationModel() { Email = email, Type = Core.Enum.EnumConfigurationType.Webhook, Value = string.Empty });
-
-                    if (!id.HasValue)
-                        return BadRequest("InsertWebhookFail");
+                    await _configurationService.Add(new ConfigurationModel() { Email = email, Type = EnumConfigurationType.ApiKey, Value = apiKey });
+                    await _configurationService.Add(new ConfigurationModel() { Email = email, Type = EnumConfigurationType.WalletAddress, Value = string.Empty });
+                    await _configurationService.Add(new ConfigurationModel() { Email = email, Type = EnumConfigurationType.Modal, Value = modalConfigurationModel });
+                    await _configurationService.Add(new ConfigurationModel() { Email = email, Type = EnumConfigurationType.Webhook, Value = string.Empty });
                 }
 
                 #endregion
