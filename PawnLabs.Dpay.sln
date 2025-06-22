@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawnLabs.Dpay.Core", "PawnL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawnLabs.Dpay.Data", "PawnLabs.Dpay.Data\PawnLabs.Dpay.Data.csproj", "{8EC7B04D-AFFD-4817-9B99-5F1E298C1781}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawnLabs.Dpay.Business", "PawnLabs.Dpay.Business\PawnLabs.Dpay.Business.csproj", "{B1009BB9-5BE1-4B8A-8474-F26640E1A6D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawnLabs.Dpay.Socket", "PawnLabs.Dpay.Socket\PawnLabs.Dpay.Socket.csproj", "{BEB8CE0D-3876-4F29-9B06-CC53E57AA913}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{8EC7B04D-AFFD-4817-9B99-5F1E298C1781}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EC7B04D-AFFD-4817-9B99-5F1E298C1781}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EC7B04D-AFFD-4817-9B99-5F1E298C1781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1009BB9-5BE1-4B8A-8474-F26640E1A6D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1009BB9-5BE1-4B8A-8474-F26640E1A6D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1009BB9-5BE1-4B8A-8474-F26640E1A6D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1009BB9-5BE1-4B8A-8474-F26640E1A6D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEB8CE0D-3876-4F29-9B06-CC53E57AA913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB8CE0D-3876-4F29-9B06-CC53E57AA913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB8CE0D-3876-4F29-9B06-CC53E57AA913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB8CE0D-3876-4F29-9B06-CC53E57AA913}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,6 +11,8 @@ namespace PawnLabs.Dpay.Api.Extension
         {
             services.Configure<TokenConfiguration>(configuration.GetSection("TokenConfiguration"));
             services.Configure<MailConfiguration>(configuration.GetSection("MailConfiguration"));
+            services.Configure<StellarConfiguration>(configuration.GetSection("StellarConfiguration"));
+            services.Configure<ModalConfiguration>(configuration.GetSection("ModalConfiguration"));
 
             return services;
         }
@@ -19,6 +21,8 @@ namespace PawnLabs.Dpay.Api.Extension
         {
             services.AddScoped<IMailHelper, MailHelper>();
             services.AddScoped<ISecurityHelper, SecurityHelper>();
+            services.AddScoped<IConfigurationHelper, ConfigurationHelper>();
+            services.AddScoped<ISocketHelper, SocketHelper>();
 
             return services;
         }

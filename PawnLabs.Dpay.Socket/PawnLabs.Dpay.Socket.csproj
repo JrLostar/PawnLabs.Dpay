@@ -8,15 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.17" />
-    <PackageReference Include="Serilog" Version="4.3.0" />
-    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PawnLabs.Dpay.Business\PawnLabs.Dpay.Business.csproj" />
     <ProjectReference Include="..\PawnLabs.Dpay.Core\PawnLabs.Dpay.Core.csproj" />
-    <ProjectReference Include="..\PawnLabs.Dpay.Data\PawnLabs.Dpay.Data.csproj" />
   </ItemGroup>
 
 </Project>

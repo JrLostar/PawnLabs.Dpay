@@ -3,8 +3,7 @@ using PawnLabs.Dpay.Data.Repository.Base;
 
 namespace PawnLabs.Dpay.Data.Repository
 {
-    public interface IProductRepository : IBaseRepository<Product>
+    public interface IPaymentRepository : IBaseRepository<Payment>
     {
-        Task<Product?> GetByID(Guid productID);
     }
 }

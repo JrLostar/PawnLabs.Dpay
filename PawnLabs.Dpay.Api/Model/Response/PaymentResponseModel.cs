@@ -1,15 +1,14 @@
-﻿using PawnLabs.Dpay.Core.Entity.Base;
-using PawnLabs.Dpay.Core.Enum;
+﻿using PawnLabs.Dpay.Core.Enum;
 
-namespace PawnLabs.Dpay.Core.Entity
+namespace PawnLabs.Dpay.Api.Model.Response
 {
-    public class Payment : IEntity
+    public class PaymentResponseModel
     {
         public Guid ID { get; set; }
 
-        public string Email { get; set; }
+        public string ProductName { get; set; }
 
-        public Guid ProductID { get; set; }
+        public string? ProductLogo { get; set; }
 
         public string BuyerAddress { get; set; }
 

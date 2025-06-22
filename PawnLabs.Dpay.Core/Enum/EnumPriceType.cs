@@ -6,6 +6,8 @@
 
         Yearly = 2,
 
-        OneTime = 3
+        OneTime = 3,
+
+        Custom = 4
     }
 }
